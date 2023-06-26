@@ -27,6 +27,9 @@ const renderResult = () => {
         const hours = Math.floor(result / 60 / 60);
         const minutes = Math.floor(result / 60);
         const seconds = Math.floor(result);
+        const arredondado = ('' + (parseInt(('' + result)[0]) + 1)).padEnd(('' + parseInt(result)).length, 0);
+        const proxniver = new Date(birthDate.getTime() + (parseInt(arredondado)) * 1000);
+        const strProxNiver = proxniver.getDate().toString() + '/' + (proxniver.getMonth() + 1).toString() + '/' + (proxniver.getYear() + 1900).toString();
 
         timeLivedElement.innerHTML = `
             <p>O seu tempo vivido até hoje é de:</p>
@@ -39,6 +42,7 @@ const renderResult = () => {
             <p>${
               seconds === 1 ? seconds + " segundo" : seconds + " segundos"
             }</p>
+            <p>Você completa ${arredondado} de segundos no dia ${strProxNiver}</p>
           `;
       } else {
         alert("Preencha com uma data de nascimento válida!");
